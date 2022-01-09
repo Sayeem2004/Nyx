@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../data/style.css"/>
+    <script src="../data/script.js"></script>
+</head>
+<body id="body" onload="start_scene1()">
+    <div class="box">
+        <p id="background">Give Background Story Here</p>
+    </div>
+    <div class="box">
+        <p id="text">Now What Shall You Do?</p>
+        <p>Health: <progress id="health" value="100" max="100"></progress>100%</p>
+        <p>Hunger: <progress id="hunger" value="100" max="100"></progress>100%</p>
+        <p>Thirst: <progress id="thirst" value="100" max="100"></progress>100%</p>
+        <p>Sleep: <progress id="sleep" value="100" max="100"></progress>100%</p>
+        <input class="button" type="button" value="Find Food" onclick="update_scene1(0)">
+        <input class="button" type="button" value="Find Water" onclick="update_scene1(1)">
+        <br> <br>
+        <input class="button" type="button" value="Explore" onclick="update_scene1(2)">
+        <input class="button" type="button" value="Panic" onclick="update_scene1(3)">
+        <br> <br>
+        <input class="button" type="button" value="Sleep" onclick="update_scene1(4)">
+    </div>
+</body>
