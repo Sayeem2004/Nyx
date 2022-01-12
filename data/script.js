@@ -47,11 +47,31 @@ function end_home() {
     url += "initial_hunger=" + encodeURIComponent(100) + "&";
     url += "initial_thirst=" + encodeURIComponent(100) + "&";
     url += "initial_energy=" + encodeURIComponent(100) + "&";
-    url += "initial_time=" + encodeURIComponent(12*60) + "&";
+    url += "initial_time=" + encodeURIComponent(12*60);
     document.location.href = url;
 }
 
 // Functions For Scene 1
+function show_tags(list) {
+    // Making Display Open
+    for (var i = 0; i < list.length; i++) {
+        document.getElementById(list[i]).style["display"] = "";
+    }
+}
+
+function hide_tags(list) {
+    // Making Display Closed
+    for (var i = 0; i < list.length; i++) {
+        document.getElementById(list[i]).style["display"] = "none";
+    }
+}
+
+function update(tag, dif, mn, mx) {
+    tag.value += dif;
+    tag.value = Math.max(mn, tag.value);
+    tag.value = Math.min(mx, tag.value);
+}
+
 function start_scene1() {
     // Parsing Previous Values
     var url = document.location.href, params = url.split('?')[1].split('&');
@@ -96,29 +116,52 @@ function start_scene1() {
 
 function action_scene1() {
     // Removing Button And Story
-    document.getElementById("button").style["display"] = "none";
-    document.getElementById("story").style["display"] = "none";
-    document.getElementById("header").style["display"] = "none";
+    const hide_list = ["button", "story", "header"];
+    hide_tags(hide_list);
+
+    // Getting Variables
+    var clock = document.getElementById("current_time");
+
+    var options = document.getElementById("options");
+    var restory = document.getElementById("restory");
+    var rescene = document.getElementById("rescene");
+    var restart = document.getElementById("restart");
+
+    var status = document.getElementById("status");
+    var progress = document.getElementById("progress");
+    var current_health = document.getElementById("current_health");
+    var health_label = document.getElementById("health_label");
+    var current_hunger = document.getElementById("current_hunger");
+    var hunger_label = document.getElementById("hunger_label");
+    var current_thirst = document.getElementById("current_thirst");
+    var thirst_label = document.getElementById("thirst_label");
+    var current_energy = document.getElementById("current_energy");
+    var energy_label = document.getElementById("energy_label");
+
+    var moves = document.getElementById("moves");
+    var follow = document.getElementById("follow");
+    var food = document.getElementById("food");
+    var water = document.getElementById("water");
+    var sleep = document.getElementById("sleep");
+    var panic = document.getElementById("panic");
+
+    // Setting Them Open
+    show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
 
     // Declaring Variables
     var speed = 75;
     var delay = 25*speed;
 
     // Adding Timer
-    document.getElementById("initial_time").style["display"] = "none";
-    var clock = document.getElementById("current_time");
-    clock.innerHTML = parse_time(parseInt(clock.value));;
+    hide_tags(["initial_time"]);
+    clock.innerHTML = parse_time(parseInt(clock.value));
     setTimeout(function(){fadeIn(clock);}, delay);
     delay += speed;
 
     // Adding Game Options
-    var options = document.getElementById("options");
     options.style["color"] = "#17D4FE";
     setTimeout(function(){fadeIn(options);}, delay);
     delay += speed;
-    var restory = document.getElementById("restory");
-    var rescene = document.getElementById("rescene");
-    var restart = document.getElementById("restart");
     restory.style["width"] = "350px";
     restory.style["height"] = "50px";
     rescene.style["width"] = "350px";
@@ -132,16 +175,25 @@ function action_scene1() {
     setTimeout(function(){fadeIn(restart);}, delay);
     delay += speed;
 
+    // Adding Player Status
+    status.style["color"] = "#17D4FE";
+    setTimeout(function(){fadeIn(status);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(progress);}, delay);
+    delay += speed;
+    health_label.innerHTML = "Health: " + current_health.value + "%";
+    current_health.style["width"] = current_health.value + "%";
+    hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
+    current_hunger.style["width"] = current_hunger.value + "%";
+    thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
+    current_thirst.style["width"] = current_thirst.value + "%";
+    energy_label.innerHTML = "Energy: " + current_energy.value + "%";
+    current_energy.style["width"] = current_energy.value + "%";
+
     // Adding Player Actions
-    var moves = document.getElementById("moves");
     moves.style["color"] = "#17D4FE";
     setTimeout(function(){fadeIn(moves);}, delay);
     delay += speed;
-    var follow = document.getElementById("follow");
-    var food = document.getElementById("food");
-    var water = document.getElementById("water");
-    var sleep = document.getElementById("sleep");
-    var panic = document.getElementById("panic");
     follow.style["width"] = "350px";
     food.style["width"] = "350px";
     water.style["width"] = "350px";
@@ -168,5 +220,61 @@ function parse_time(num) {
     var days = Math.floor(num / 1440);
     var hours = Math.floor(num / 60);
     var minutes = num % 60;
-    return "Day " + days + " " + hours + ":" + minutes;
+    return "Day " + days + " " + (hours < 10 ? "0"+hours : hours) + ":" + (minutes < 10 ? "0"+minutes : minutes);
+}
+
+function story_scene1() {
+    // Bring Backing Story
+    show_tags(["button", "story", "header"]);
+
+    // Setting Them Open
+    hide_tags(["current_time", "options", "restory", "rescene", "restart", "status", "moves", "follow", "food", "water", "sleep", "panic"]);
+}
+
+function reset_scene1() {
+    // Getting Initial Values
+    health = document.getElementById("initial_health").value;
+    hunger = document.getElementById("initial_hunger").value;
+    thirst = document.getElementById("initial_thirst").value;
+    energy = document.getElementById("initial_energy").value;
+    time = document.getElementById("initial_time").value;
+
+    // Updating URL
+    url = "https://sayeem2004.github.io/Nyx/pages/scene1.html?";
+    url += "initial_health=" + encodeURIComponent(health) + "&";
+    url += "initial_hunger=" + encodeURIComponent(hunger) + "&";
+    url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
+    url += "initial_energy=" + encodeURIComponent(energy) + "&";
+    url += "initial_time=" + encodeURIComponent(time);
+    document.location.href = url;
+}
+
+function restart() {
+    // Going Back To Home
+    document.location.href = "https://sayeem2004.github.io/Nyx/pages/home.html"
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function update_scene1(mode) {
+    if (mode == 0) {
+        // Updating Time
+        time_add = getRandomInt(60, 121);
+        clock = document.getElementById("current_time");
+        update(clock, time_add, 0, 1000000000);
+        clock.innerHTML = parse_time(parseInt(clock.value));
+
+        // Updating Health, Food, Thirst, Energy
+        health = document.getElementById("current_health");
+        hunger = document.getElementById("current_hunger");
+        thirst = document.getElementById("current_thirst");
+        energy = document.getElementById("current_energy");
+        if (energy.value == 0) update(health, -5, 0, 100);
+        if (hunger.value == 0) update(health, -10, 0, 100);
+        if (thirst.value == 0) update(health, -15, 0, 100);
+    }
 }
