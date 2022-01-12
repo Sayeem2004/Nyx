@@ -76,13 +76,13 @@ function start_scene1() {
 
     // First Message
     var text1 = "Scene 1";
-    setTimeout(function(){typeEffect(header, speed, text1, "#8F00FF");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text1, "black");}, delay);
     delay += text1.length * speed + 25 * speed;
     setTimeout(function(){header.innerHTML = "";}, delay);
 
     // Story Board
-    var text2 = "You wake up to a loud crash.";
-    setTimeout(function(){typeEffect(story, speed, text2, "#8F00FF");}, delay);
+    var text2 = "Boom! Your eyes shoot open, and you are blinded by the light. After a couple of moments of adjusting your eyes, you begin taking in your surroundings. There are massive pieces of rubble nearby that you assume to be from your crash-landing. Crash-landing? Were you in a spaceship of some kind? Your memory seems to be foggy. You remember entering cryostasis but can’t recall what happened, where you are, or your purpose here. Whatever. The most urgent thing is to survive. As you harden your resolve, you discover purple particles floating up from the ground and streaming towards somewhere in the distance. Maybe you should go to check them out?";
+    setTimeout(function(){typeEffect(story, speed, text2, "black");}, delay);
     delay += text2.length * speed + 25 * speed;
 
     // Fading In Button
@@ -90,12 +90,4 @@ function start_scene1() {
     button.style["width"] = "250px";
     button.style["height"] = "100px";
     setTimeout(function(){fadeIn(button);}, delay);
-}
-
-function continue_scene1() {
-    return;
-}
-
-function update_scene1(type) {
-    return;
 }
