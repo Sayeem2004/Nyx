@@ -32,7 +32,16 @@ h1 {
 p {
     font-size: 30px;
     text-align: center;
-    margin-top: 10%;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.clock {
+    opacity: 0%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #17D4FE;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
 }

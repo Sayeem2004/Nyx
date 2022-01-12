@@ -46,7 +46,8 @@ function end_home() {
     url += "initial_health=" + encodeURIComponent(100) + "&";
     url += "initial_hunger=" + encodeURIComponent(100) + "&";
     url += "initial_thirst=" + encodeURIComponent(100) + "&";
-    url += "initial_energy=" + encodeURIComponent(100);
+    url += "initial_energy=" + encodeURIComponent(100) + "&";
+    url += "initial_time=" + encodeURIComponent(12*60) + "&";
     document.location.href = url;
 }
 
@@ -64,6 +65,7 @@ function start_scene1() {
     document.getElementById("current_hunger").value = document.getElementById("initial_hunger").value;
     document.getElementById("current_thirst").value = document.getElementById("initial_thirst").value;
     document.getElementById("current_energy").value = document.getElementById("initial_energy").value;
+    document.getElementById("current_time").value = document.getElementById("initial_time").value;
 
     // Setting Up CSS
     document.getElementById("body").style["background-image"] = "url(../images/scene1.jpg)";
@@ -81,7 +83,7 @@ function start_scene1() {
     setTimeout(function(){header.innerHTML = "";}, delay);
 
     // Story Board
-    var text2 = "Boom! Your eyes shoot open, and you are blinded by the light. After a couple of moments of adjusting your eyes, you begin taking in your surroundings. You appear to be in a grassy plain with massive pieces of rubble nearby that you assume to be from your crash-landing. Crash-landing? Were you in a spaceship of some kind? Your memory seems to be foggy. You remember entering cryostasis but can’t recall what happened, where you are, or your purpose here. Whatever. The most urgent thing is to survive. As you harden your resolve, you discover purple particles floating up from the ground and streaming towards somewhere in the distance. Maybe you should go to check them out?";
+    var text2 = "Boom! Your eyes shoot open, and you are blinded by the light. After a couple of moments of adjusting your eyes, you begin taking in your surroundings. You appear to be in a grassy plain with massive pieces of rubble nearby that you assume to be from your crash-landing. Crash-landing? Were you in a spaceship of some kind? Your memory seems to be foggy. You remember entering cryostasis but can't recall what happened, where you are, or your purpose here. Whatever. The most urgent thing is to survive. As you harden your resolve, you discover purple particles floating up from the ground and streaming towards somewhere in the distance. Maybe you should go to check them out?";
     setTimeout(function(){typeEffect(story, speed, text2, "black");}, delay);
     delay += text2.length * speed + 25 * speed;
 
@@ -90,4 +92,81 @@ function start_scene1() {
     button.style["width"] = "250px";
     button.style["height"] = "100px";
     setTimeout(function(){fadeIn(button);}, delay);
+}
+
+function action_scene1() {
+    // Removing Button And Story
+    document.getElementById("button").style["display"] = "none";
+    document.getElementById("story").style["display"] = "none";
+    document.getElementById("header").style["display"] = "none";
+
+    // Declaring Variables
+    var speed = 75;
+    var delay = 25*speed;
+
+    // Adding Timer
+    document.getElementById("initial_time").style["display"] = "none";
+    var clock = document.getElementById("current_time");
+    clock.innerHTML = parse_time(parseInt(clock.value));;
+    setTimeout(function(){fadeIn(clock);}, delay);
+    delay += speed;
+
+    // Adding Game Options
+    var options = document.getElementById("options");
+    options.style["color"] = "#17D4FE";
+    setTimeout(function(){fadeIn(options);}, delay);
+    delay += speed;
+    var restory = document.getElementById("restory");
+    var rescene = document.getElementById("rescene");
+    var restart = document.getElementById("restart");
+    restory.style["width"] = "350px";
+    restory.style["height"] = "50px";
+    rescene.style["width"] = "350px";
+    rescene.style["height"] = "50px";
+    restart.style["width"] = "350px";
+    restart.style["height"] = "50px";
+    setTimeout(function(){fadeIn(restory);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(rescene);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(restart);}, delay);
+    delay += speed;
+
+    // Adding Player Actions
+    var moves = document.getElementById("moves");
+    moves.style["color"] = "#17D4FE";
+    setTimeout(function(){fadeIn(moves);}, delay);
+    delay += speed;
+    var follow = document.getElementById("follow");
+    var food = document.getElementById("food");
+    var water = document.getElementById("water");
+    var sleep = document.getElementById("sleep");
+    var panic = document.getElementById("panic");
+    follow.style["width"] = "350px";
+    food.style["width"] = "350px";
+    water.style["width"] = "350px";
+    sleep.style["width"] = "350px";
+    panic.style["width"] = "350px";
+    follow.style["height"] = "50px";
+    food.style["height"] = "50px";
+    water.style["height"] = "50px";
+    sleep.style["height"] = "50px";
+    panic.style["height"] = "50px";
+    setTimeout(function(){fadeIn(follow);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(food);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(water);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(sleep);}, delay);
+    delay += speed;
+    setTimeout(function(){fadeIn(panic);}, delay);
+    delay += speed;
+}
+
+function parse_time(num) {
+    var days = Math.floor(num / 1440);
+    var hours = Math.floor(num / 60);
+    var minutes = num % 60;
+    return "Day " + days + " " + hours + ":" + minutes;
 }

@@ -2,11 +2,11 @@ var opacity = 0;
 var intervalID = 0;
 
 function fadeOut(img) {
-    intervalID = setInterval(function(){hide(img);}, 20);
+    intervalID = setInterval(function(){hide(img);}, 40);
 }
 
 function fadeIn(img) {
-	intervalID = setInterval(function(){show(img);}, 20);
+	intervalID = setInterval(function(){show(img);}, 40);
 }
 
 function show(img) {
