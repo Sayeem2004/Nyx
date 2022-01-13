@@ -139,8 +139,8 @@ function action_scene1() {
     show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
 
     // Declaring Variables
-    var speed = 75;
-    var delay = 25*speed;
+    var speed = 15;
+    var delay = 10*speed;
 
     // Adding Timer
     hide_tags(["initial_time"]);
@@ -268,23 +268,29 @@ function follow_update(msgs) {
     var hunger = document.getElementById("current_hunger");
     var thirst = document.getElementById("current_thirst");
     var energy = document.getElementById("current_energy");
-    update(energy, -1*getRandomInt(5, 11), 0, 100);
-    update(hunger, -1*getRandomInt(5, 11), 0, 100);
-    update(thirst, -1*getRandomInt(5, 16), 0, 100);
+    update(energy, getRandomInt(5, 11), 0, 100);
+    current_energy.style["width"] = current_energy.value + "%";
+    update(hunger, getRandomInt(5, 11), 0, 100);
+    current_hunger.style["width"] = current_hunger.value + "%";
+    update(thirst, getRandomInt(5, 16), 0, 100);
+    current_thirst.style["width"] = current_thirst.value + "%";
 
     // Updating Warnings
     var response = document.getElementById("response");
     response.innerHTML = "";
     if (energy.value == 0) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
         response.innerHTML += "You lost health from extreme tiredness. ";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
         response.innerHTML += "You lost health from extreme hunger. "
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
         response.innerHTML += "You lost health from extreme thirst. ";
     }
     if (health.value == 0) {
