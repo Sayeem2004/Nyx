@@ -37,7 +37,9 @@ function start_home() {
 
 function end_home() {
     // Moving Onto Next Page
-    var url = "https://sayeem2004.github.io/Nyx/pages/scene1.html?";
+    var parts = document.location.href.split("/");
+    parts.pop();
+    var url = parts.join("/") + "/scene1.html?";
     url += "initial_health=" + encodeURIComponent(100) + "&";
     url += "initial_hunger=" + encodeURIComponent(100) + "&";
     url += "initial_thirst=" + encodeURIComponent(100) + "&";
@@ -135,11 +137,15 @@ function action_scene1() {
     var sleep = document.getElementById("sleep");
     var panic = document.getElementById("panic");
 
+    var row1 = document.getElementById("row1");
+    var row2 = document.getElementById("row2");
+    var row3 = document.getElementById("row3");
+
     // Setting Them Open
     show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
 
     // Declaring Variables
-    var speed = 10;
+    var speed = 50;
     var delay = 10*speed;
 
     // Adding Timer
@@ -158,11 +164,7 @@ function action_scene1() {
     rescene.style["height"] = "50px";
     restart.style["width"] = "350px";
     restart.style["height"] = "50px";
-    setTimeout(function(){fadeIn(restory);}, delay);
-    delay += speed;
-    setTimeout(function(){fadeIn(rescene);}, delay);
-    delay += speed;
-    setTimeout(function(){fadeIn(restart);}, delay);
+    setTimeout(function(){fadeIn(row1);}, delay);
     delay += speed;
 
     // Adding Player Status
@@ -194,15 +196,9 @@ function action_scene1() {
     water.style["height"] = "50px";
     sleep.style["height"] = "50px";
     panic.style["height"] = "50px";
-    setTimeout(function(){fadeIn(follow);}, delay);
+    setTimeout(function(){fadeIn(row2);}, delay);
     delay += speed;
-    setTimeout(function(){fadeIn(food);}, delay);
-    delay += speed;
-    setTimeout(function(){fadeIn(water);}, delay);
-    delay += speed;
-    setTimeout(function(){fadeIn(sleep);}, delay);
-    delay += speed;
-    setTimeout(function(){fadeIn(panic);}, delay);
+    setTimeout(function(){fadeIn(row3);}, delay);
     delay += speed;
 }
 
@@ -230,7 +226,9 @@ function reset_scene(scene) {
     var time = document.getElementById("initial_time").value;
 
     // Updating URL
-    var url = "https://sayeem2004.github.io/Nyx/pages/scene" + scene + ".html?";
+    var parts = document.location.href.split("/");
+    parts.pop();
+    var url = parts.join("/") + "/scene" + scene + ".html?";
     url += "initial_health=" + encodeURIComponent(health) + "&";
     url += "initial_hunger=" + encodeURIComponent(hunger) + "&";
     url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
@@ -241,7 +239,10 @@ function reset_scene(scene) {
 
 function restart() {
     // Going Back To Home
-    document.location.href = "https://sayeem2004.github.io/Nyx/pages/home.html"
+    var parts = document.location.href.split("/");
+    parts.pop();
+    var url = parts.join("/") + "home.html"
+    document.location.href = url;
 }
 
 function getRandomInt(min, max) {
@@ -315,7 +316,9 @@ function end_scene1() {
     var time = document.getElementById("current_time").value;
 
     // Updating URL
-    var url = "https://sayeem2004.github.io/Nyx/pages/scene2.html?";
+    var parts = document.location.href.split("/");
+    parts.pop();
+    var url = parts.join("/") + "/scene2.html?";
     url += "initial_health=" + encodeURIComponent(health) + "&";
     url += "initial_hunger=" + encodeURIComponent(hunger) + "&";
     url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
@@ -334,7 +337,9 @@ function start_death(scene) {
     var current_time = document.getElementById("current_time").value;
 
     // Updating URL
-    var url = "https://sayeem2004.github.io/Nyx/pages/death.html?"
+    var parts = document.location.href.split("/");
+    parts.pop();
+    var url = parts.join("/") + "/death.html?";
     url += "initial_health=" + encodeURIComponent(health) + "&";
     url += "initial_hunger=" + encodeURIComponent(hunger) + "&";
     url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
