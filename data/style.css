@@ -45,3 +45,19 @@ p {
     font-family: Orbitron;
     letter-spacing: 7px;
 }
+
+.Row {
+    margin-right: auto;
+    margin-left: auto;
+    display: table;
+    width: 80%;
+    border-spacing: 10px; /*Optional*/
+}
+
+.Column {
+    display: table-cell;
+}
+
+img {
+    opacity: 0%;
+}

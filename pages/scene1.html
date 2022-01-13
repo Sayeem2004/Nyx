@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../data/particles.css"/>
     <link rel="stylesheet" type="text/css" href="../data/button.css"/>
     <link rel="stylesheet" type="text/css" href="../data/progress.css"/>
+    <link rel="icon" href="../images/favicon.ico">
     <script src="../data/script.js"></script>
     <script src="../data/typing.js"></script>
     <script src="../data/fader.js"></script>
@@ -16,35 +17,58 @@
         <h1 id="header"></h1>
         <p id="story"></p>
         <br>
-        <button id="button" class="glow-on-hover" type="button" onclick="action_scene1()">CONTINUE TO ACTION PHASE</button>
-        <p id="initial_time" class="clock" valie="0"></p>
+        <button style="display: none;" id="button" class="glow-on-hover" type="button" onclick="action_scene1()">CONTINUE TO ACTION PHASE</button>
+        <p id="initial_time" class="clock" value="0"></p>
         <p id="current_time" class="clock" value="0"></p>
         <input type="hidden" id="initial_health" value="0"/>
         <input type="hidden" id="initial_hunger" value="0"/>
         <input type="hidden" id="initial_thirst" value="0"/>
         <input type="hidden" id="initial_energy" value="0"/>
+        <br>
         <p style="opacity: 0%" id="options">Game Options</p>
-        <button id="restory" class="glow-on-hover" type="button" onclick="story_scene1()">GO BACK TO STORY PHASE</button>
-        <button id="rescene" class="glow-on-hover" type="button" onclick="reset_scene1()">RESET SCENE 1</button>
-        <button id="restart" class="glow-on-hover" type="button" onclick="restart()">RESTART GAME</button>
-        <p style="opacity: 0%" id="status">Player Status</p>
-        <div class="progress" id="progress">
-            <p id="health_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Health: </p>
-            <div class="progress-bar" id="current_health" value="0"></div>
-            <p id="hunger_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Hunger: </p>
-            <div class="progress-bar" id="current_hunger" value="0"></div>
-            <p id="thirst_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Thirst: </p>
-            <div class="progress-bar" id="current_thirst" value="0"></div>
-            <p id="energy_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Energy: </p>
-            <div class="progress-bar" id="current_energy" value="0"></div>
+        <div class="Row">
+            <div class="Column"><button style="display: none;" id="restory" class="glow-on-hover" type="button" onclick="story_scene1()">GO BACK TO STORY PHASE</button></div>
+            <div class="Column"><button style="display: none;" id="rescene" class="glow-on-hover" type="button" onclick="reset_scene(1)">RESET SCENE</button></div>
+            <div class="Column"><button style="display: none;" id="restart" class="glow-on-hover" type="button" onclick="restart()">RESTART GAME</button></div>
         </div>
+        <br>
+        <p style="opacity: 0%" id="status">Player Status</p>
+        <br>
+        <div class="progress" id="progress">
+            <div class="Row" style="width: 100%;">
+                <div class="Column" style="width: 15%; text-align: left; vertical-align: top; padding-top: 5px;"><p id="health_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Health: </p></div>
+                <div class="Column"><div class="progress-bar" id="current_health" value="0"></div></div>
+            </div>
+            <div class="Row" style="width: 100%">
+                <div class="Column" style="width: 15%; text-align: left; vertical-align: top; padding-top: 5px;"><p id="hunger_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Hunger: </p></div>
+                <div class="Column"><div class="progress-bar" id="current_hunger" value="0"></div></div>
+            </div>
+            <div class="Row" style="width: 100%">
+                <div class="Column" style="width: 15%; text-align: left; vertical-align: top; padding-top: 5px;"><p id="thirst_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Thirst: </p></div>
+                <div class="Column"><div class="progress-bar" id="current_thirst" value="0"></div></div>
+            </div>
+            <div class="Row" style="width: 100%">
+                <div class="Column" style="width: 15%; text-align: left; vertical-align: top; padding-top: 5px;"><p id="energy_label" style="text-align: left; font-size: 20px; margin-left: 0%;">Energy: </p></div>
+                <div class="Column"><div class="progress-bar" id="current_energy" value="0"></div></div>
+            </div>
+        </div>
+        <br>
         <p style="opacity: 0%" id="moves">Player Moves</p>
-        <p style="display: none" id="response"></p>
-        <button id="follow" class="glow-on-hover" type="button" onclick="update_scene1(0)">FOLLOW THE PARTICLES</button>
-        <button id="food" class="glow-on-hover" type="button" onclick="update_scene1(1)">FIND FOOD</button>
-        <button id="water" class="glow-on-hover" type="button" onclick="update_scene1(2)">FIND WATER</button>
-        <button id="sleep" class="glow-on-hover" type="button" onclick="update_scene1(3)">SLEEP</button>
-        <button id="panic" class="glow-on-hover" type="button" onclick="update_scene1(4)">PANIC</button>
+        <p id="response"></p>
+        <div class="Row">
+            <span style="display: none;" id="follow_count" value="0"></span>
+            <div class="Column"><button style="display: none;" id="follow" class="glow-on-hover" type="button" onclick="follow_update(['hola', 'hola2'])">FOLLOW THE PARTICLES</button></div>
+            <span style="display: none;" id="food_count" value="0"></span>
+            <div class="Column"><button style="display: none;" id="food" class="glow-on-hover" type="button" onclick="food_update()">FIND FOOD</button></div>
+            <span style="display: none;" id="water_count" value="0"></span>
+            <div class="Column"><button style="display: none;" id="water" class="glow-on-hover" type="button" onclick="water_update()">FIND WATER</button></div>
+        </div>
+        <div class="Row">
+            <span style="display: none;" id="sleep_count" value="0"></span>
+            <div class="Column"><button style="display: none;" id="sleep" class="glow-on-hover" type="button" onclick="">SLEEP</button></div>
+            <span style="display: none;" id="panic_count" value="0"></span>
+            <div class="Column"><button style="display: none;" id="panic" class="glow-on-hover" type="button" onclick="update_scene1(4)">PANIC</button></div>
+        </div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
 </body>
