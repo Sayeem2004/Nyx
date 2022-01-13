@@ -206,7 +206,7 @@ function parse_time(num) {
     var days = Math.floor(num / 1440);
     var hours = Math.floor((num % 1440) / 60);
     var minutes = num % 60;
-    return "Day " + days + " " + (hours < 10 ? "0"+hours : hours) + ":" + (minutes < 10 ? "0"+minutes : minutes);
+    return "Day " + days + " " + (hours < 10 ? "0"+hours : hours) + ":" + (minutes < 10 ? "0"+minutes : minutes) + " (MT)";
 }
 
 function story_scene1() {
@@ -241,7 +241,7 @@ function restart() {
     // Going Back To Home
     var parts = document.location.href.split("/");
     parts.pop();
-    var url = parts.join("/") + "home.html"
+    var url = parts.join("/") + "/home.html"
     document.location.href = url;
 }
 
