@@ -139,7 +139,7 @@ function action_scene1() {
     show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
 
     // Declaring Variables
-    var speed = 15;
+    var speed = 10;
     var delay = 10*speed;
 
     // Adding Timer
