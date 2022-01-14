@@ -45,7 +45,7 @@ function end_home() {
     url += "initial_hunger=" + encodeURIComponent(100) + "&";
     url += "initial_thirst=" + encodeURIComponent(100) + "&";
     url += "initial_energy=" + encodeURIComponent(100) + "&";
-    url += "initial_time=" + encodeURIComponent(12*60);
+    url += "initial_time=" + encodeURIComponent(0);
     document.location.href = url;
 }
 
@@ -260,7 +260,7 @@ function update(tag, dif, mn, mx) {
 
 function update_scene1(mode) {
     if (mode == 0) {
-        follow_msgs = ["", "", "", "", "", "You stand in front of a withered forest, should you enter?"];
+        follow_msgs = ["You have followed the particles but have not found anything yet.", "You have come upon a large, unnatural ravine with particles coming out of it.", "You have seen the bodies of a family of rodents with particles surrounding them.", "You have found a withered, foggy forest, should you enter?"];
         follow_update(follow_msgs);
     }
     if (mode == 1) {
@@ -268,18 +268,22 @@ function update_scene1(mode) {
         food_update(food_msgs);
     }
     if (mode == 2) {
-        water_msgs = ["You have drunken water from a nearby stream."];
+        water_msgs = ["You have drunken water from a nearby stream.", "You have hacked away at a nearby tree and drinken the sap.", "You have opened your mouth and drunken rain water."];
         water_update(water_msgs);
     }
     if (mode == 3) {
-        sleep_msgs = ["You have collapsed on the grass and taken a nap", "You have rested in the shade of a nearby tree", "You have slept under the blaring sun."];
+        sleep_msgs = ["You have collapsed on the grass and taken a nap.", "You have rested in the shade of a nearby tree.", "You have slept under the blaring sun."];
         sleep_update(sleep_msgs);
+    }
+    if (mode == 4) {
+        panic_msgs = ["You have faced your existential dread and lost.", "You have run around in a circle screaming and crying.", "You have not faced this much depression since your wife died."];
+        panic_update(panic_msgs);
     }
 }
 
 function follow_update(msgs) {
     // Updating Time
-    var time_add = getRandomInt(60, 121);
+    var time_add = getRandomInt(240, 301);
     var clock = document.getElementById("current_time");
     update(clock, time_add, 0, 1000000000);
     clock.innerHTML = parse_time(parseInt(clock.value));
@@ -293,13 +297,13 @@ function follow_update(msgs) {
     var hunger_label = document.getElementById("hunger_label");
     var thirst_label = document.getElementById("thirst_label");
     var energy_label = document.getElementById("energy_label");
-    update(energy, -1*getRandomInt(5, 11), 0, 100);
+    update(energy, -1*getRandomInt(20, 26), 0, 100);
     current_energy.style["width"] = current_energy.value + "%";
     energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-    update(hunger, -1*getRandomInt(5, 11), 0, 100);
+    update(hunger, -1*getRandomInt(20, 26), 0, 100);
     current_hunger.style["width"] = current_hunger.value + "%";
     hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-    update(thirst, -1*getRandomInt(5, 16), 0, 100);
+    update(thirst, -1*getRandomInt(20, 26), 0, 100);
     current_thirst.style["width"] = current_thirst.value + "%";
     thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
 
@@ -586,6 +590,77 @@ function sleep_update(msgs) {
     }
 }
 
+function panic_update(msgs) {
+    // Variables
+    var health = document.getElementById("current_health");
+    var hunger = document.getElementById("current_hunger");
+    var thirst = document.getElementById("current_thirst");
+    var energy = document.getElementById("current_energy");
+    var health_label = document.getElementById("health_label");
+    var hunger_label = document.getElementById("hunger_label");
+    var thirst_label = document.getElementById("thirst_label");
+    var energy_label = document.getElementById("energy_label");
+
+    // Preventing Spam
+    var count = document.getElementById("panic_count");
+    var cnt = parseInt(count.value);
+    count.value = cnt+1;
+    var warning = document.getElementById("warning");
+    warning.style["color"] = "red";
+    warning.style["font-size"] = "20px";
+    warning.innerHTML = "";
+
+    // Updating Health, Food, Thirst, Energy
+    update(energy, -1*getRandomInt(10, 16), 0, 100);
+    current_energy.style["width"] = current_energy.value + "%";
+    energy_label.innerHTML = "Energy: " + current_energy.value + "%";
+    update(hunger, -1*getRandomInt(10, 16), 0, 100);
+    current_hunger.style["width"] = current_hunger.value + "%";
+    hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
+    update(thirst, -1*getRandomInt(15, 21), 0, 100);
+    current_thirst.style["width"] = current_thirst.value + "%";
+    thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
+
+
+    // Updating Time
+    var time_add = getRandomInt(30, 61);
+    var clock = document.getElementById("current_time");
+    update(clock, time_add, 0, 1000000000);
+    clock.innerHTML = parse_time(parseInt(clock.value));
+
+    // Updating Warnings
+    if (energy.value == 0) {
+        update(health, -1*getRandomInt(3, 6), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You lost health from extreme tiredness. ";
+    }
+    if (hunger.value == 0) {
+        update(health, -1*getRandomInt(3, 11), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You lost health from extreme hunger. "
+    }
+    if (thirst.value == 0) {
+        update(health, -1*getRandomInt(3, 16), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You lost health from extreme thirst. ";
+    }
+    if (health.value == 0) {
+        start_death(1);
+    }
+
+    // Updating Response Count
+    var response = document.getElementById("response");
+    response.style["color"] = "#17D4FE";
+    if (cnt < 20) {
+        response.innerHTML = msgs[getRandomInt(0, msgs.length)];
+    } else {
+        response.innerHTML = "";
+    }
+}
+
 function end_scene1() {
     // Getting Current Values
     var health = document.getElementById("current_health").value;
@@ -608,10 +683,10 @@ function end_scene1() {
 
 function start_death(scene) {
     // Getting Current Values
-    var health = document.getElementById("current_health").value;
-    var hunger = document.getElementById("current_hunger").value;
-    var thirst = document.getElementById("current_thirst").value;
-    var energy = document.getElementById("current_energy").value;
+    var health = document.getElementById("initial_health").value;
+    var hunger = document.getElementById("initial_hunger").value;
+    var thirst = document.getElementById("initial_thirst").value;
+    var energy = document.getElementById("initial_energy").value;
     var initial_time = document.getElementById("initial_time").value;
     var current_time = document.getElementById("current_time").value;
 
@@ -638,7 +713,7 @@ function continue_death() {
     }
 
     // Setting Up CSS
-    document.getElementById("body").style["background-image"] = "url(../images/scene1.jpg)";
+    document.getElementById("body").style["background-image"] = "url(../images/death.jpg)";
 
     // Declaring Variables
     var speed = 50;
@@ -652,13 +727,15 @@ function continue_death() {
     initial_time.innerHTML = "You Survived For"
     setTimeout(function(){fadeIn(initial_time);}, delay);
     delay += speed;
-    current_time.innerHTML = clock.innerHTML = parse_time(parseInt(current_time.value));
+    current_time.innerHTML = parse_time(parseInt(current_time.value));
     setTimeout(function(){fadeIn(current_time);}, delay);
     delay += speed;
-    if (current_time < 720) {
-        show(["easter_egg", "image"])
+    if (parseInt(current_time.value) < 720) {
+        show_tags(["easter_egg", "image"])
+        easter_egg.style["display"] = "";
+        image.style["display"] = "";
         easter_egg.innerHTML = "Congratulations, You Have Died In Under 12 Hours And Obtained An Easter Egg."
-        setTimeout(function(){fadeIn(current_time);}, delay);
+        setTimeout(function(){fadeIn(easter_egg);}, delay);
         delay += speed;
         setTimeout(function(){fadeIn(image);}, delay);
         delay += speed;
@@ -671,8 +748,10 @@ function continue_death() {
     options.style["color"] = "#17D4FE";
     setTimeout(function(){fadeIn(options);}, delay);
     delay += speed;
+    rescene.style["display"] = "";
     rescene.style["width"] = "350px";
     rescene.style["height"] = "50px";
+    restart.style["display"] = "";
     restart.style["width"] = "350px";
     restart.style["height"] = "50px";
     setTimeout(function(){fadeIn(rescene);}, delay);
