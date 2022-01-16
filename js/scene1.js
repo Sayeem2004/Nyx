@@ -1,4 +1,7 @@
 function start_scene1() {
+    // Setting Up CSS
+    document.getElementById("body").style["background-image"] = "url(../img/scene1.jpg)";
+
     // Parsing Previous Values
     var url = document.location.href, params = (url.split('?').length <= 1 ? [] : url.split('?')[1].split('&'));
     for (var i = 0; i < params.length; i++) {
@@ -12,9 +15,6 @@ function start_scene1() {
     document.getElementById("current_thirst").value = document.getElementById("initial_thirst").value;
     document.getElementById("current_energy").value = document.getElementById("initial_energy").value;
     document.getElementById("current_time").value = document.getElementById("initial_time").value;
-
-    // Setting Up CSS
-    document.getElementById("body").style["background-image"] = "url(../images/scene1.jpg)";
 
     // Setting Up Variables
     var speed = 50;
@@ -108,7 +108,7 @@ function action_scene1() {
     delay += speed;
     setTimeout(function(){fadeIn(progress);}, delay);
     delay += speed;
-    health_lab el.innerHTML = "Health: " + current_health.value + "%";
+    health_label.innerHTML = "Health: " + current_health.value + "%";
     current_health.style["width"] = current_health.value + "%";
     hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
     current_hunger.style["width"] = current_hunger.value + "%";

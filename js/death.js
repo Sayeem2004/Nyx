@@ -30,7 +30,7 @@ function continue_death() {
     }
 
     // Setting Up CSS
-    document.getElementById("body").style["background-image"] = "url(../images/death.jpg)";
+    document.getElementById("body").style["background-image"] = "url(../img/death.jpg)";
 
     // Declaring Variables
     var speed = 50;

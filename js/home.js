@@ -1,6 +1,6 @@
 function start_home() {
     // Setting Up Background
-    document.getElementById("body").style["background-image"] = "url(../images/home.jpg)";
+    document.getElementById("body").style["background-image"] = "url(../img/home.jpg)";
 
     // Setting Up Variables
     var speed = 50;
