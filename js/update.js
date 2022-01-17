@@ -14,13 +14,13 @@ function follow_update(msgs, scene) {
     var hunger_label = document.getElementById("hunger_label");
     var thirst_label = document.getElementById("thirst_label");
     var energy_label = document.getElementById("energy_label");
-    update(energy, -1*getRandomInt(15, 26), 0, 100);
+    update(energy, -1*getRandomInt(8, 16), 0, 100);
     current_energy.style["width"] = current_energy.value + "%";
     energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-    update(hunger, -1*getRandomInt(15, 26), 0, 100);
+    update(hunger, -1*getRandomInt(8, 16), 0, 100);
     current_hunger.style["width"] = current_hunger.value + "%";
     hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-    update(thirst, -1*getRandomInt(15, 26), 0, 100);
+    update(thirst, -1*getRandomInt(8, 16), 0, 100);
     current_thirst.style["width"] = current_thirst.value + "%";
     thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
 
@@ -85,24 +85,24 @@ function food_update(msgs) {
     warning.innerHTML = "";
     if (cnt >= 20) {
         warning.innerHTML = "This place seems to have run out of food.";
-        update(energy, -1*getRandomInt(5, 11), 0, 100);
+        update(energy, -1*getRandomInt(3, 9), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-        update(hunger, -1*getRandomInt(5, 11), 0, 100);
+        update(hunger, -1*getRandomInt(3, 9), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-        update(thirst, -1*getRandomInt(5, 16), 0, 100);
+        update(thirst, -1*getRandomInt(3, 9), 0, 100);
         current_thirst.style["width"] = current_thirst.value + "%";
         thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
     } else {
         // Updating Health, Food, Thirst, Energy
-        update(energy, -1*getRandomInt(5, 11), 0, 100);
+        update(energy, -1*getRandomInt(3, 9), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
         update(hunger, getRandomInt(25, 51), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-        update(thirst, -1*getRandomInt(5, 16), 0, 100);
+        update(thirst, -1*getRandomInt(3, 9), 0, 100);
         current_thirst.style["width"] = current_thirst.value + "%";
         thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
     }
@@ -167,21 +167,21 @@ function water_update(msgs) {
     warning.innerHTML = "";
     if (cnt >= 20) {
         warning.innerHTML = "This place seems to have run out of water.";
-        update(energy, -1*getRandomInt(5, 11), 0, 100);
+        update(energy, -1*getRandomInt(3, 9), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-        update(hunger, -1*getRandomInt(5, 11), 0, 100);
+        update(hunger, -1*getRandomInt(3, 9), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-        update(thirst, -1*getRandomInt(5, 16), 0, 100);
+        update(thirst, -1*getRandomInt(3, 9), 0, 100);
         current_thirst.style["width"] = current_thirst.value + "%";
         thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
     } else {
         // Updating Health, Food, Thirst, Energy
-        update(energy, -1*getRandomInt(5, 11), 0, 100);
+        update(energy, -1*getRandomInt(3, 9), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-        update(hunger, -1*getRandomInt(5, 11), 0, 100);
+        update(hunger, -1*getRandomInt(3, 9), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
         update(thirst, getRandomInt(25, 51), 0, 100);
@@ -249,13 +249,13 @@ function sleep_update(msgs) {
     warning.innerHTML = "";
     if (cnt >= 20) {
         warning.innerHTML = "You are too energetic to sleep.";
-        update(energy, -1*getRandomInt(5, 11), 0, 100);
+        update(energy, -1*getRandomInt(3, 9), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-        update(hunger, -1*getRandomInt(5, 11), 0, 100);
+        update(hunger, -1*getRandomInt(3, 9), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-        update(thirst, -1*getRandomInt(5, 16), 0, 100);
+        update(thirst, -1*getRandomInt(3, 9), 0, 100);
         current_thirst.style["width"] = current_thirst.value + "%";
         thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
     } else {
@@ -263,10 +263,10 @@ function sleep_update(msgs) {
         update(energy, getRandomInt(50, 101), 0, 100);
         current_energy.style["width"] = current_energy.value + "%";
         energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-        update(hunger, -1*getRandomInt(5, 11), 0, 100);
+        update(hunger, -1*getRandomInt(3, 9), 0, 100);
         current_hunger.style["width"] = current_hunger.value + "%";
         hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-        update(thirst, -1*getRandomInt(5, 16), 0, 100);
+        update(thirst, -1*getRandomInt(3, 9), 0, 100);
         current_thirst.style["width"] = current_thirst.value + "%";
         thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
     }
@@ -331,13 +331,13 @@ function panic_update(msgs) {
     warning.innerHTML = "";
 
     // Updating Health, Food, Thirst, Energy
-    update(energy, -1*getRandomInt(10, 16), 0, 100);
+    update(energy, -1*getRandomInt(8, 16), 0, 100);
     current_energy.style["width"] = current_energy.value + "%";
     energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-    update(hunger, -1*getRandomInt(10, 16), 0, 100);
+    update(hunger, -1*getRandomInt(8, 16), 0, 100);
     current_hunger.style["width"] = current_hunger.value + "%";
     hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-    update(thirst, -1*getRandomInt(15, 21), 0, 100);
+    update(thirst, -1*getRandomInt(8, 16), 0, 100);
     current_thirst.style["width"] = current_thirst.value + "%";
     thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
 
@@ -374,9 +374,5 @@ function panic_update(msgs) {
     // Updating Response Count
     var response = document.getElementById("response");
     response.style["color"] = "#17D4FE";
-    if (cnt < 20) {
-        response.innerHTML = msgs[getRandomInt(0, msgs.length)];
-    } else {
-        response.innerHTML = "";
-    }
+    response.innerHTML = msgs[getRandomInt(0, msgs.length)];
 }
