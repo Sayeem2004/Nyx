@@ -1,4 +1,4 @@
-function follow_update(msgs) {
+function follow_update(msgs, scene) {
     // Updating Time
     var time_add = getRandomInt(240, 301);
     var clock = document.getElementById("current_time");
@@ -14,13 +14,13 @@ function follow_update(msgs) {
     var hunger_label = document.getElementById("hunger_label");
     var thirst_label = document.getElementById("thirst_label");
     var energy_label = document.getElementById("energy_label");
-    update(energy, -1*getRandomInt(20, 26), 0, 100);
+    update(energy, -1*getRandomInt(15, 26), 0, 100);
     current_energy.style["width"] = current_energy.value + "%";
     energy_label.innerHTML = "Energy: " + current_energy.value + "%";
-    update(hunger, -1*getRandomInt(20, 26), 0, 100);
+    update(hunger, -1*getRandomInt(15, 26), 0, 100);
     current_hunger.style["width"] = current_hunger.value + "%";
     hunger_label.innerHTML = "Hunger: " + current_hunger.value + "%";
-    update(thirst, -1*getRandomInt(20, 26), 0, 100);
+    update(thirst, -1*getRandomInt(15, 26), 0, 100);
     current_thirst.style["width"] = current_thirst.value + "%";
     thirst_label.innerHTML = "Thirst: " + current_thirst.value + "%";
 
@@ -57,7 +57,10 @@ function follow_update(msgs) {
     var count = document.getElementById("follow_count");
     var cnt = parseInt(count.value)
     response.innerHTML = msgs[Math.min(cnt, msgs.length-1)]
-    if (cnt == msgs.length) end_scene1();
+    if (cnt >= msgs.length) {
+        if (scene == 1) end_scene1();
+        if (scene == 2) end_scene2();
+    }
     count.value = cnt+1;
 }
 

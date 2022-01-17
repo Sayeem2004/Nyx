@@ -1,6 +1,6 @@
-function start_scene1() {
+function start_scene2() {
     // Setting Up CSS
-    document.getElementById("body").style["background-image"] = "url(../img/scene1.jpg)";
+    document.getElementById("body").style["background-image"] = "url(../img/scene2.jpg)";
 
     // Parsing Previous Values
     var url = document.location.href, params = (url.split('?').length <= 1 ? [] : url.split('?')[1].split('&'));
@@ -23,15 +23,48 @@ function start_scene1() {
     var story = document.getElementById("story");
 
     // First Message
-    var text1 = "Scene 1";
+    var text1 = "Scene 2";
     setTimeout(function(){typeEffect(header, speed, text1, "black");}, delay);
     delay += text1.length * speed + 25 * speed;
     setTimeout(function(){header.innerHTML = "";}, delay);
 
     // Story Board
-    var text2 = "Boom! Your eyes shoot open, and you are blinded by the light. After a couple of moments of adjusting your eyes, you begin taking in your surroundings. You appear to be in a grassy plain with massive pieces of rubble nearby that you assume to be from your crash-landing. Crash-landing? Were you in a spaceship of some kind? Your memory seems to be foggy. You remember entering cryostasis but can't recall what happened, where you are, or your purpose here. Whatever. The most urgent thing is to survive. As you harden your resolve, you discover purple particles floating up from the ground and streaming towards somewhere in the distance. Maybe you should go to check them out?";
+    var text2 = "You enter the ghastly forest and observe as the seemingly healthy tree branches fall down and begin to wither up. A couple of seconds later, purple particles come flying out of the branch. These purple particles were absorbing lifeforce! But why weren’t you being affected? Before you could think of an answer, you hear a yelp of pain in the distance and start heading towards it. You find an injured wolf pinned under a fallen tree, with purple particles beginning to form around it. It appears that only heavily injured lifeforms are being affected by these particles. With that mystery explained, will you decide to help the wolf or forsake it?";
     setTimeout(function(){typeEffect(story, speed/16, text2, "black");}, delay);
     delay += text2.length * speed/16 + 25 * speed;
+
+    // Fading In Button
+    show_tags(["choice1", "choice2", "row0"]);
+    var choice1 = document.getElementById("choice1");
+    choice1.style["width"] = "250px";
+    choice1.style["height"] = "75px";
+    var choice2 = document.getElementById("choice2");
+    choice2.style["width"] = "250px";
+    choice2.style["height"] = "75px";
+    var row0 = document.getElementById("row0");
+    setTimeout(function(){fadeIn(row0);}, delay);
+}
+
+function decision_scene2(mode) {
+    // Removing Buttons
+    hide_tags(["choice1", "choice2", "row0"])
+
+    // Setting Variables
+    var speed = 50;
+    var delay = 25*speed;
+    var help = document.getElementById("help");
+
+    // Adding Decision
+    var text;
+    if (mode == 0) {
+        help.value = "yes";
+        text = "After some effort, you manage to push the tree off the injured wolf. It hastily gets up and limps away, but it doesn't get far before collapsing. The purple particles were absorbing too much of the wolf's energy. You decide to give the wolf one of the shrooms you have been eating. After some reluctance, the wolf eats the shroom and regains its energy. The purple particles disappear, presumably seeking a more vulnerable target. Having performed a noble deed, you decide to continue on your journey following the stream of particles.";
+    } else {
+        help.value = "no";
+        text = "You pity the wolf’s situation, but you have more pressing things to dwell on. Soon enough, the purple particles may begin sucking energy from you as well. You have to hurry taowards the destination of the particles and find a way to stop them. Without looking back, you continue on your journey following the stream of particles."
+    }
+    setTimeout(function(){typeEffect(help, speed/16, text, "black");}, delay);
+    delay += text.length * speed/16 + 25 * speed;
 
     // Fading In Button
     show_tags(["button"]);
@@ -41,9 +74,9 @@ function start_scene1() {
     setTimeout(function(){fadeIn(button);}, delay);
 }
 
-function action_scene1() {
+function action_scene2() {
     // Removing Button And Story
-    hide_list = ["button", "story", "header"];
+    hide_list = ["button", "story", "header", "help"];
     hide_tags(hide_list);
 
     // Getting Variables
@@ -137,18 +170,18 @@ function action_scene1() {
     delay += speed;
 }
 
-function story_scene1() {
+function story_scene2() {
     // Bring Backing Story
-    show_tags(["button", "story", "header"]);
+    show_tags(["button", "story", "header", "help"]);
 
     // Setting Them Open
     hide_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
 }
 
-function update_scene1(mode) {
+function update_scene2(mode) {
     if (mode == 0) {
-        follow_msgs = ["You have followed the particles, but have not found anything yet.", "You have come upon a large, unnatural ravine with particles coming out of it.", "You have seen the bodies of a family of rodents with particles surrounding them.", "You seem to be approaching a withered foggy forest, do you enter?"];
-        follow_update(follow_msgs, 1);
+        follow_msgs = ["A large branch narrowly misses penetrating your head, but you continue onwards.", "A nest of baby birds falls out of a nearby tree and soon they wither away.", "You can finally see the fog starting to dissipate; the end of the forest should be near.", "You finally made your way out of the forest and you see a village nearby."];
+        follow_update(follow_msgs, 2);
     }
     if (mode == 1) {
         food_msgs = ["You have found and eaten a sugon shroom.", "You have found and eaten a ligon shroom.", "You have found and eaten a gulpon shroom.", "You have found and eaten a slurbon shroom."];
@@ -168,22 +201,24 @@ function update_scene1(mode) {
     }
 }
 
-function end_scene1() {
+function end_scene2() {
     // Getting Current Values
     var health = document.getElementById("current_health").value;
     var hunger = document.getElementById("current_hunger").value;
     var thirst = document.getElementById("current_thirst").value;
     var energy = document.getElementById("current_energy").value;
     var time = document.getElementById("current_time").value;
+    var help = document.getElementById("help").value;
 
     // Updating URL
     var parts = document.location.href.split("/");
     parts.pop();
-    var url = parts.join("/") + "/scene2.html?";
+    var url = parts.join("/") + "/scene3.html?";
     url += "initial_health=" + encodeURIComponent(health) + "&";
     url += "initial_hunger=" + encodeURIComponent(hunger) + "&";
     url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
     url += "initial_energy=" + encodeURIComponent(energy) + "&";
-    url += "initial_time=" + encodeURIComponent(time);
+    url += "initial_time=" + encodeURIComponent(time) + "&";
+    url += "help=" + encodeURIComponent(help);
     document.location.href = url;
 }
