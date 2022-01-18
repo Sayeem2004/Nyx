@@ -33,22 +33,30 @@ function follow_update(msgs, scene) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme tiredness. ";
+        warning.innerHTML += "You lost health from extreme tiredness.";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme hunger. "
+        warning.innerHTML += "You lost health from extreme hunger."
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme thirst. ";
+        warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
         start_death(1);
+    }
+
+    // Health Regeneration
+    if (energy.value > 70 && hunger.value >= 70 && thirst.value >= 70) {
+        update(health, getRandomInt(10, 21), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You have gained health from being satiated.";
     }
 
     // Updating Response Count
@@ -118,22 +126,30 @@ function food_update(msgs) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme tiredness. ";
+        warning.innerHTML += "You lost health from extreme tiredness.";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme hunger. "
+        warning.innerHTML += "You lost health from extreme hunger."
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme thirst. ";
+        warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
         start_death(1);
+    }
+
+    // Health Regeneration
+    if (energy.value > 70 && hunger.value >= 70 && thirst.value >= 70) {
+        update(health, getRandomInt(10, 21), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You have gained health from being satiated.";
     }
 
     // Updating Response Count
@@ -200,22 +216,30 @@ function water_update(msgs) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme tiredness. ";
+        warning.innerHTML += "You lost health from extreme tiredness.";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme hunger. "
+        warning.innerHTML += "You lost health from extreme hunger."
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme thirst. ";
+        warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
         start_death(1);
+    }
+
+    // Health Regeneration
+    if (energy.value > 70 && hunger.value >= 70 && thirst.value >= 70) {
+        update(health, getRandomInt(10, 21), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You have gained health from being satiated.";
     }
 
     // Updating Response Count
@@ -282,22 +306,30 @@ function sleep_update(msgs) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme tiredness. ";
+        warning.innerHTML += "You lost health from extreme tiredness.";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme hunger. "
+        warning.innerHTML += "You lost health from extreme hunger."
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme thirst. ";
+        warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
         start_death(1);
+    }
+
+    // Health Regeneration
+    if (energy.value > 70 && hunger.value >= 70 && thirst.value >= 70) {
+        update(health, getRandomInt(10, 21), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You have gained health from being satiated.";
     }
 
     // Updating Response Count
@@ -353,22 +385,30 @@ function panic_update(msgs) {
         update(health, -1*getRandomInt(3, 6), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme tiredness. ";
+        warning.innerHTML += "You lost health from extreme tiredness.";
     }
     if (hunger.value == 0) {
         update(health, -1*getRandomInt(3, 11), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme hunger. "
+        warning.innerHTML += "You lost health from extreme hunger."
     }
     if (thirst.value == 0) {
         update(health, -1*getRandomInt(3, 16), 0, 100);
         current_health.style["width"] = current_health.value + "%";
         health_label.innerHTML = "Health: " + current_health.value + "%";
-        warning.innerHTML += "You lost health from extreme thirst. ";
+        warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
         start_death(1);
+    }
+
+    // Health Regeneration
+    if (energy.value > 70 && hunger.value >= 70 && thirst.value >= 70) {
+        update(health, getRandomInt(10, 21), 0, 100);
+        current_health.style["width"] = current_health.value + "%";
+        health_label.innerHTML = "Health: " + current_health.value + "%";
+        warning.innerHTML += "You have gained health from being satiated.";
     }
 
     // Updating Response Count
