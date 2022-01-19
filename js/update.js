@@ -71,6 +71,7 @@ function follow_update(msgs, scene) {
         if (scene == 1) end_scene1();
         if (scene == 2) end_scene2();
         if (scene == 3) end_scene3();
+        if (scene == 4) end_scene4();
     }
     count.value = cnt+1;
 }
