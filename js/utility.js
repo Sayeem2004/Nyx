@@ -16,7 +16,7 @@ function parse_time(num) {
     var days = Math.floor(num / 1440);
     var hours = Math.floor((num % 1440) / 60);
     var minutes = num % 60;
-    return "Day " + days + " " + (hours < 10 ? "0"+hours : hours) + ":" + (minutes < 10 ? "0"+minutes : minutes) + " (MT)";
+    return "Day " + days + " " + (hours < 10 ? "0"+hours : hours) + ":" + (minutes < 10 ? "0"+minutes : minutes);
 }
 
 function reset_scene(scene) {
@@ -26,6 +26,8 @@ function reset_scene(scene) {
     var thirst = document.getElementById("initial_thirst").value;
     var energy = document.getElementById("initial_energy").value;
     var time = document.getElementById("initial_time").value;
+    var help = document.getElementById("help");
+    if (help != null) help = help.value;
 
     // Updating URL
     var parts = document.location.href.split("/");
@@ -36,6 +38,7 @@ function reset_scene(scene) {
     url += "initial_thirst=" + encodeURIComponent(thirst) + "&";
     url += "initial_energy=" + encodeURIComponent(energy) + "&";
     url += "initial_time=" + encodeURIComponent(time);
+    if (help != null) url += "&help=" + encodeURIComponent(help);
     document.location.href = url;
 }
 

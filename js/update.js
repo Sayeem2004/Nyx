@@ -26,7 +26,7 @@ function follow_update(msgs, scene) {
 
     // Updating Warnings
     var warning = document.getElementById("warning");
-    warning.style["color"] = "red";
+    warning.style["width"] = "80%";
     warning.style["font-size"] = "20px";
     warning.innerHTML = "";
     if (energy.value == 0) {
@@ -48,7 +48,9 @@ function follow_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        start_death(1);
+        if (scene == 1) start_death(1);
+        if (scene == 2) start_death(2);
+        if (scene == 3) start_death(3);
     }
 
     // Health Regeneration
@@ -61,18 +63,19 @@ function follow_update(msgs, scene) {
 
     // Updating Response Count
     var response = document.getElementById("response");
-    response.style["color"] = "#17D4FE";
+    response.style["font-size"] = "30px";
     var count = document.getElementById("follow_count");
     var cnt = parseInt(count.value)
     response.innerHTML = msgs[Math.min(cnt, msgs.length-1)]
     if (cnt >= msgs.length) {
         if (scene == 1) end_scene1();
         if (scene == 2) end_scene2();
+        if (scene == 3) end_scene3();
     }
     count.value = cnt+1;
 }
 
-function food_update(msgs) {
+function food_update(msgs, scene) {
     // Variables
     var health = document.getElementById("current_health");
     var hunger = document.getElementById("current_hunger");
@@ -88,7 +91,7 @@ function food_update(msgs) {
     var cnt = parseInt(count.value);
     count.value = cnt+1;
     var warning = document.getElementById("warning");
-    warning.style["color"] = "red";
+    warning.style["width"] = "80%";
     warning.style["font-size"] = "20px";
     warning.innerHTML = "";
     if (cnt >= 20) {
@@ -141,7 +144,9 @@ function food_update(msgs) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        start_death(1);
+        if (scene == 1) start_death(1);
+        if (scene == 2) start_death(2);
+        if (scene == 3) start_death(3);
     }
 
     // Health Regeneration
@@ -154,7 +159,7 @@ function food_update(msgs) {
 
     // Updating Response Count
     var response = document.getElementById("response");
-    response.style["color"] = "#17D4FE";
+    response.style["font-size"] = "30px";
     if (cnt < 20) {
         response.innerHTML = msgs[getRandomInt(0, msgs.length)];
     } else {
@@ -162,7 +167,7 @@ function food_update(msgs) {
     }
 }
 
-function water_update(msgs) {
+function water_update(msgs, scene) {
     // Variables
     var health = document.getElementById("current_health");
     var hunger = document.getElementById("current_hunger");
@@ -178,7 +183,7 @@ function water_update(msgs) {
     var cnt = parseInt(count.value);
     count.value = cnt+1;
     var warning = document.getElementById("warning");
-    warning.style["color"] = "red";
+    warning.style["width"] = "80%";
     warning.style["font-size"] = "20px";
     warning.innerHTML = "";
     if (cnt >= 20) {
@@ -231,7 +236,9 @@ function water_update(msgs) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        start_death(1);
+        if (scene == 1) start_death(1);
+        if (scene == 2) start_death(2);
+        if (scene == 3) start_death(3);
     }
 
     // Health Regeneration
@@ -244,7 +251,7 @@ function water_update(msgs) {
 
     // Updating Response Count
     var response = document.getElementById("response");
-    response.style["color"] = "#17D4FE";
+    response.style["font-size"] = "30px";
     if (cnt < 20) {
         response.innerHTML = msgs[getRandomInt(0, msgs.length)];
     } else {
@@ -252,7 +259,7 @@ function water_update(msgs) {
     }
 }
 
-function sleep_update(msgs) {
+function sleep_update(msgs, scene) {
     // Variables
     var health = document.getElementById("current_health");
     var hunger = document.getElementById("current_hunger");
@@ -268,7 +275,7 @@ function sleep_update(msgs) {
     var cnt = parseInt(count.value);
     count.value = cnt+1;
     var warning = document.getElementById("warning");
-    warning.style["color"] = "red";
+    warning.style["width"] = "80%";
     warning.style["font-size"] = "20px";
     warning.innerHTML = "";
     if (cnt >= 20) {
@@ -321,7 +328,9 @@ function sleep_update(msgs) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        start_death(1);
+        if (scene == 1) start_death(1);
+        if (scene == 2) start_death(2);
+        if (scene == 3) start_death(3);
     }
 
     // Health Regeneration
@@ -334,7 +343,7 @@ function sleep_update(msgs) {
 
     // Updating Response Count
     var response = document.getElementById("response");
-    response.style["color"] = "#17D4FE";
+    response.style["font-size"] = "30px";
     if (cnt < 20) {
         response.innerHTML = msgs[getRandomInt(0, msgs.length)];
     } else {
@@ -342,7 +351,7 @@ function sleep_update(msgs) {
     }
 }
 
-function panic_update(msgs) {
+function panic_update(msgs, scene) {
     // Variables
     var health = document.getElementById("current_health");
     var hunger = document.getElementById("current_hunger");
@@ -358,7 +367,7 @@ function panic_update(msgs) {
     var cnt = parseInt(count.value);
     count.value = cnt+1;
     var warning = document.getElementById("warning");
-    warning.style["color"] = "red";
+    warning.style["width"] = "80%";
     warning.style["font-size"] = "20px";
     warning.innerHTML = "";
 
@@ -400,7 +409,9 @@ function panic_update(msgs) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        start_death(1);
+        if (scene == 1) start_death(1);
+        if (scene == 2) start_death(2);
+        if (scene == 3) start_death(3);
     }
 
     // Health Regeneration
@@ -413,6 +424,6 @@ function panic_update(msgs) {
 
     // Updating Response Count
     var response = document.getElementById("response");
-    response.style["color"] = "#17D4FE";
+    response.style["font-size"] = "30px";
     response.innerHTML = msgs[getRandomInt(0, msgs.length)];
 }

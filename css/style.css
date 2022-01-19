@@ -19,7 +19,7 @@ body {
 h1 {
     font-size: 60px;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -35,9 +35,8 @@ p {
 
 .clock {
     opacity: 0%;
-    margin-left: 10%;
-    margin-right: 10%;
-    color: #17D4FE;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 60px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     letter-spacing: 7px;

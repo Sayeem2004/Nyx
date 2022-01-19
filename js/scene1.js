@@ -23,20 +23,22 @@ function start_scene1() {
     var story = document.getElementById("story");
 
     // First Message
+    header.style["width"] = "250px";
     var text1 = "Scene 1";
-    setTimeout(function(){typeEffect(header, speed, text1, "black");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text1, "white");}, delay);
     delay += text1.length * speed + 25 * speed;
     setTimeout(function(){header.innerHTML = "";}, delay);
 
     // Story Board
     var text2 = "Boom! Your eyes shoot open, and you are blinded by the light. After a couple of moments of adjusting your eyes, you begin taking in your surroundings. You appear to be in a grassy plain with massive pieces of rubble nearby that you assume to be from your crash-landing. Crash-landing? Were you in a spaceship of some kind? Your memory seems to be foggy. You remember entering cryostasis but can't recall what happened, where you are, or your purpose here. Whatever. The most urgent thing is to survive. As you harden your resolve, you discover purple particles floating up from the ground and streaming towards somewhere in the distance. Maybe you should go to check them out?";
-    setTimeout(function(){typeEffect(story, speed/16, text2, "black");}, delay);
+    setTimeout(function(){typeEffect(story, speed/16, text2, "");}, delay);
     delay += text2.length * speed/16 + 25 * speed;
 
     // Fading In Button
     show_tags(["button"]);
     var button = document.getElementById("button");
     button.style["width"] = "250px";
+    button.style["font-size"] = "20px";
     button.style["height"] = "100px";
     setTimeout(function(){fadeIn(button);}, delay);
 }
@@ -84,26 +86,30 @@ function action_scene1() {
     var delay = 10*speed;
 
     // Adding Timer
+    clock.style["width"] = "500px";
     hide_tags(["initial_time"]);
     clock.innerHTML = parse_time(parseInt(clock.value));
     setTimeout(function(){fadeIn(clock);}, delay);
     delay += speed;
 
     // Adding Game Options
-    options.style["color"] = "#17D4FE";
+    options.style["width"] = "250px";
     setTimeout(function(){fadeIn(options);}, delay);
     delay += speed;
     restory.style["width"] = "350px";
     restory.style["height"] = "50px";
+    restory.style["font-size"] = "20px";
     rescene.style["width"] = "350px";
     rescene.style["height"] = "50px";
+    rescene.style["font-size"] = "20px";
     restart.style["width"] = "350px";
     restart.style["height"] = "50px";
+    restart.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(row1);}, delay);
     delay += speed;
 
     // Adding Player Status
-    status.style["color"] = "#17D4FE";
+    status.style["width"] = "250px";
     setTimeout(function(){fadeIn(status);}, delay);
     delay += speed;
     setTimeout(function(){fadeIn(progress);}, delay);
@@ -118,7 +124,7 @@ function action_scene1() {
     current_energy.style["width"] = current_energy.value + "%";
 
     // Adding Player Actions
-    moves.style["color"] = "#17D4FE";
+    moves.style["width"] = "250px";
     setTimeout(function(){fadeIn(moves);}, delay);
     delay += speed;
     follow.style["width"] = "350px";
@@ -131,6 +137,11 @@ function action_scene1() {
     water.style["height"] = "50px";
     sleep.style["height"] = "50px";
     panic.style["height"] = "50px";
+    follow.style["font-size"] = "20px";
+    food.style["font-size"] = "20px";
+    water.style["font-size"] = "20px";
+    sleep.style["font-size"] = "20px";
+    panic.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(row2);}, delay);
     delay += speed;
     setTimeout(function(){fadeIn(row3);}, delay);
@@ -152,19 +163,19 @@ function update_scene1(mode) {
     }
     if (mode == 1) {
         food_msgs = ["You have found and eaten a sugon shroom.", "You have found and eaten a ligon shroom.", "You have found and eaten a gulpon shroom.", "You have found and eaten a slurbon shroom."];
-        food_update(food_msgs);
+        food_update(food_msgs, 1);
     }
     if (mode == 2) {
         water_msgs = ["You have drunken water from a nearby stream.", "You have hacked away at a nearby tree and drinken the sap.", "You have opened your mouth and drunken rain water."];
-        water_update(water_msgs);
+        water_update(water_msgs, 1);
     }
     if (mode == 3) {
         sleep_msgs = ["You have collapsed on the grass and taken a nap.", "You have rested in the shade of a nearby tree.", "You have slept under the blaring sun."];
-        sleep_update(sleep_msgs);
+        sleep_update(sleep_msgs, 1);
     }
     if (mode == 4) {
         panic_msgs = ["You have faced your existential dread and lost.", "You have run around in a circle screaming and crying.", "You have not faced this much depression since your wife died."];
-        panic_update(panic_msgs);
+        panic_update(panic_msgs, 1);
     }
 }
 

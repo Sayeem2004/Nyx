@@ -9,26 +9,27 @@ function start_home() {
 
     // First Message
     var text1 = "Welcome To Nyx!";
-    setTimeout(function(){typeEffect(header, speed, text1, "#C3B1E1");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text1, "");}, delay);
     delay += text1.length * speed + 25 * speed;
 
     // Third Message
     var text3 = "I Hope You Enjoy It!";
-    setTimeout(function(){typeEffect(header, speed, text3, "#C3B1E1");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text3, "");}, delay);
     delay += text3.length * speed + 25 * speed;
 
     // Fourth Message
     var text4 = "Try To Find All The Endings :)";
-    setTimeout(function(){typeEffect(header, speed, text4, "#C3B1E1");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text4, "");}, delay);
     delay += text4.length * speed + 25 * speed;
 
     // Fifth Message
     var text5 = "Please Click The Button Below To Get Started.";
-    setTimeout(function(){typeEffect(header, speed, text5, "#C3B1E1");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text5, "");}, delay);
     delay += text5.length * speed + 25 * speed;
 
     // Fading In Button
     var button = document.getElementById("button");
+    button.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(button);}, delay);
 }
 

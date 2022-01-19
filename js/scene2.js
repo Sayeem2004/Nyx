@@ -23,14 +23,15 @@ function start_scene2() {
     var story = document.getElementById("story");
 
     // First Message
+    header.style["width"] = "250px";
     var text1 = "Scene 2";
-    setTimeout(function(){typeEffect(header, speed, text1, "black");}, delay);
+    setTimeout(function(){typeEffect(header, speed, text1, "");}, delay);
     delay += text1.length * speed + 25 * speed;
     setTimeout(function(){header.innerHTML = "";}, delay);
 
     // Story Board
     var text2 = "You enter the ghastly forest and observe as the seemingly healthy tree branches fall down and begin to wither up. A couple of seconds later, purple particles come flying out of the branch. These purple particles were absorbing lifeforce! But why weren’t you being affected? Before you could think of an answer, you hear a yelp of pain in the distance and start heading towards it. You find an injured wolf pinned under a fallen tree, with purple particles beginning to form around it. It appears that only heavily injured lifeforms are being affected by these particles. With that mystery explained, will you decide to help the wolf or forsake it?";
-    setTimeout(function(){typeEffect(story, speed/16, text2, "black");}, delay);
+    setTimeout(function(){typeEffect(story, speed/16, text2, "");}, delay);
     delay += text2.length * speed/16 + 25 * speed;
 
     // Fading In Button
@@ -38,9 +39,11 @@ function start_scene2() {
     var choice1 = document.getElementById("choice1");
     choice1.style["width"] = "250px";
     choice1.style["height"] = "75px";
+    choice1.style["font-size"] = "20px";
     var choice2 = document.getElementById("choice2");
     choice2.style["width"] = "250px";
     choice2.style["height"] = "75px";
+    choice2.style["font-size"] = "20px";
     var row0 = document.getElementById("row0");
     setTimeout(function(){fadeIn(row0);}, delay);
 }
@@ -61,9 +64,9 @@ function decision_scene2(mode) {
         text = "After some effort, you manage to push the tree off the injured wolf. It hastily gets up and limps away, but it doesn't get far before collapsing. The purple particles were absorbing too much of the wolf's energy. You decide to give the wolf one of the shrooms you have been eating. After some reluctance, the wolf eats the shroom and regains its energy. The purple particles disappear, presumably seeking a more vulnerable target. Having performed a noble deed, you decide to continue on your journey following the stream of particles.";
     } else {
         help.value = "no";
-        text = "You pity the wolf’s situation, but you have more pressing things to dwell on. Soon enough, the purple particles may begin sucking energy from you as well. You have to hurry taowards the destination of the particles and find a way to stop them. Without looking back, you continue on your journey following the stream of particles."
+        text = "You pity the wolf’s situation, but you have more pressing things to dwell on. Soon enough, the purple particles may begin sucking energy from you as well. You have to hurry towards the destination of the particles and find a way to stop them. Without looking back, you continue on your journey following the stream of particles."
     }
-    setTimeout(function(){typeEffect(help, speed/16, text, "black");}, delay);
+    setTimeout(function(){typeEffect(help, speed/16, text, "");}, delay);
     delay += text.length * speed/16 + 25 * speed;
 
     // Fading In Button
@@ -71,6 +74,7 @@ function decision_scene2(mode) {
     var button = document.getElementById("button");
     button.style["width"] = "250px";
     button.style["height"] = "100px";
+    button.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(button);}, delay);
 }
 
@@ -117,26 +121,30 @@ function action_scene2() {
     var delay = 10*speed;
 
     // Adding Timer
+    clock.style["width"] = "500px";
     hide_tags(["initial_time"]);
     clock.innerHTML = parse_time(parseInt(clock.value));
     setTimeout(function(){fadeIn(clock);}, delay);
     delay += speed;
 
     // Adding Game Options
-    options.style["color"] = "#17D4FE";
+    options.style["width"] = "250px";
     setTimeout(function(){fadeIn(options);}, delay);
     delay += speed;
     restory.style["width"] = "350px";
     restory.style["height"] = "50px";
+    restory.style["font-size"] = "20px";
     rescene.style["width"] = "350px";
     rescene.style["height"] = "50px";
+    rescene.style["font-size"] = "20px";
     restart.style["width"] = "350px";
     restart.style["height"] = "50px";
+    restart.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(row1);}, delay);
     delay += speed;
 
     // Adding Player Status
-    status.style["color"] = "#17D4FE";
+    status.style["width"] = "250px";
     setTimeout(function(){fadeIn(status);}, delay);
     delay += speed;
     setTimeout(function(){fadeIn(progress);}, delay);
@@ -151,7 +159,7 @@ function action_scene2() {
     current_energy.style["width"] = current_energy.value + "%";
 
     // Adding Player Actions
-    moves.style["color"] = "#17D4FE";
+    moves.style["width"] = "250px";
     setTimeout(function(){fadeIn(moves);}, delay);
     delay += speed;
     follow.style["width"] = "350px";
@@ -164,6 +172,11 @@ function action_scene2() {
     water.style["height"] = "50px";
     sleep.style["height"] = "50px";
     panic.style["height"] = "50px";
+    follow.style["font-size"] = "20px";
+    food.style["font-size"] = "20px";
+    water.style["font-size"] = "20px";
+    sleep.style["font-size"] = "20px";
+    panic.style["font-size"] = "20px";
     setTimeout(function(){fadeIn(row2);}, delay);
     delay += speed;
     setTimeout(function(){fadeIn(row3);}, delay);
@@ -185,19 +198,19 @@ function update_scene2(mode) {
     }
     if (mode == 1) {
         food_msgs = ["You have found and eaten a sugon shroom.", "You have found and eaten a ligon shroom.", "You have found and eaten a gulpon shroom.", "You have found and eaten a slurbon shroom."];
-        food_update(food_msgs);
+        food_update(food_msgs, 2);
     }
     if (mode == 2) {
         water_msgs = ["You have drunken water from a nearby stream.", "You have hacked away at a nearby tree and drinken the sap.", "You have opened your mouth and drunken rain water."];
-        water_update(water_msgs);
+        water_update(water_msgs, 2);
     }
     if (mode == 3) {
         sleep_msgs = ["You have collapsed on the grass and taken a nap.", "You have rested in the shade of a nearby tree.", "You have slept under the blaring sun."];
-        sleep_update(sleep_msgs);
+        sleep_update(sleep_msgs, 2);
     }
     if (mode == 4) {
         panic_msgs = ["You have faced your existential dread and lost.", "You have run around in a circle screaming and crying.", "You have not faced this much depression since your wife died."];
-        panic_update(panic_msgs);
+        panic_update(panic_msgs, 2);
     }
 }
 

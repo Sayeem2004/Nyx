@@ -1,5 +1,4 @@
 .glow-on-hover {
-    height: 50px;
     border: none;
     outline: none;
     color: #fff;
@@ -11,8 +10,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
-    font-size: 20px;
+    width: 80%;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
