@@ -48,9 +48,7 @@ function follow_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        if (scene == 1) start_death(1);
-        if (scene == 2) start_death(2);
-        if (scene == 3) start_death(3);
+        start_death(scene);
     }
 
     // Health Regeneration
@@ -72,6 +70,7 @@ function follow_update(msgs, scene) {
         if (scene == 2) end_scene2();
         if (scene == 3) end_scene3();
         if (scene == 4) end_scene4();
+        if (scene == 5) end_scene5();
     }
     count.value = cnt+1;
 }
@@ -145,9 +144,7 @@ function food_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        if (scene == 1) start_death(1);
-        if (scene == 2) start_death(2);
-        if (scene == 3) start_death(3);
+        start_death(scene);
     }
 
     // Health Regeneration
@@ -237,9 +234,7 @@ function water_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        if (scene == 1) start_death(1);
-        if (scene == 2) start_death(2);
-        if (scene == 3) start_death(3);
+        start_death(scene);
     }
 
     // Health Regeneration
@@ -329,9 +324,7 @@ function sleep_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        if (scene == 1) start_death(1);
-        if (scene == 2) start_death(2);
-        if (scene == 3) start_death(3);
+        start_death(scene);
     }
 
     // Health Regeneration
@@ -410,9 +403,7 @@ function panic_update(msgs, scene) {
         warning.innerHTML += "You lost health from extreme thirst.";
     }
     if (health.value == 0) {
-        if (scene == 1) start_death(1);
-        if (scene == 2) start_death(2);
-        if (scene == 3) start_death(3);
+        start_death(scene);
     }
 
     // Health Regeneration

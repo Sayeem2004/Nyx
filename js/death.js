@@ -42,8 +42,6 @@ function continue_death() {
     // Giving Death Response
     var initial_time = document.getElementById("initial_time");
     var current_time = document.getElementById("current_time");
-    var easter_egg = document.getElementById("easter_egg");
-    var image = document.getElementById("image");
     initial_time.innerHTML = "You Survived For"
     setTimeout(function(){fadeIn(initial_time);}, delay);
     delay += speed;

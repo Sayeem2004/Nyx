@@ -42,6 +42,11 @@ function reset_scene(scene) {
     document.location.href = url;
 }
 
+function reset_ending() {
+    // Reloading Page
+    location.reload();
+}
+
 function restart() {
     // Going Back To Home
     var parts = document.location.href.split("/");
