@@ -114,7 +114,7 @@ function action_scene2() {
     var row3 = document.getElementById("row3");
 
     // Setting Them Open
-    show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
+    show_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "response", "warning", "follow", "food", "water", "sleep", "panic"]);
 
     // Declaring Variables
     var speed = 50;
@@ -188,7 +188,7 @@ function story_scene2() {
     show_tags(["button", "story", "header", "help"]);
 
     // Setting Them Open
-    hide_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "follow", "food", "water", "sleep", "panic"]);
+    hide_tags(["current_time", "options", "restory", "rescene", "restart", "status", "progress", "current_health", "current_hunger", "current_thirst", "current_energy", "moves", "response", "warning", "follow", "food", "water", "sleep", "panic"]);
 }
 
 function update_scene2(mode) {
